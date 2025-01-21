@@ -6,9 +6,9 @@ const DesktopMenu = () => {
     <div className="flex-container-row gap-12">
         {
             menuItems.map((menuItem, index) => (
-                <div>
+                <div key={index}>
                     <Link href={menuItem.url}>
-                        <p className="hover:underline underline-offset-4">{menuItem.text}</p>
+                        <p className="font-semibold hover:underline underline-offset-8 hover:text-accent2">{menuItem.text}</p>
                     </Link>
                 </div>
             ))

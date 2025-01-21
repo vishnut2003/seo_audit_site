@@ -15,7 +15,6 @@ export default {
         foregroundlight: "var(--foreground-light)",
         accent1: "var(--Accent-1)",
         accent2: "var(--Accent-2)",
-        accent3: "var(--Accent-3)",
       },
     },
   },

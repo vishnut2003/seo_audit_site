@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 // const geistSans = Geist({
@@ -12,7 +12,7 @@ import "./globals.css";
 //   subsets: ["latin"],
 // });
 
-const rubik = Rubik({
+const montserrat = Montserrat({
   variable: "--font-rubik",
   subsets: ["latin"],
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${rubik.className} antialiased`}
+        className={`${montserrat.className} antialiased`}
       >
         {children}
       </body>
