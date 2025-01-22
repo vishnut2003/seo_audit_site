@@ -45,6 +45,10 @@ p {
   @apply bg-background text-accent2 font-extrabold py-2 px-7 border-l-2 border-b-2 border-accent2 rounded-sm hover:bg-accent2 hover:text-background;
 }
 
+.button-style-secondary {
+  @apply bg-accent1 flex justify-center items-center gap-2 py-4 px-7 text-lg font-semibold rounded-sm hover:bg-accent2;
+}
+
 .button-style-transperant {
   @apply bg-accent2 text-background drop-shadow-md font-semibold py-2 px-4 hover:bg-accent1 bg-opacity-15 hover:text-background rounded-sm;
 }

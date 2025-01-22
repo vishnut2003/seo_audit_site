@@ -74,7 +74,7 @@ const HeroSection = () => {
           <Image
             alt="Tool Dashboard"
             src={'/home/home-hero-image.png'}
-            width={1914}
+            width={1055}
             height={919}
             className="w-full rounded-lg"
           />
