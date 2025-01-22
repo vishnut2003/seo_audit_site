@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { RiBarChartHorizontalLine, RiCloseLargeLine } from '@remixicon/react';
 
 const MobileMenu = () => {

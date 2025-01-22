@@ -1,4 +1,4 @@
-import { RemixiconComponentType, RiSettings4Line, RiUser3Line } from "@remixicon/react";
+import { RemixiconComponentType, RiHome2Line } from "@remixicon/react";
 
 export interface footerMenuIterface {
     name: string,
@@ -8,14 +8,9 @@ export interface footerMenuIterface {
 
 const footerMenuItems: footerMenuIterface[] = [
     {
-        name: 'My Account',
-        icon: RiSettings4Line,
-        link: '/dashboard/advance/my-account',
-    },
-    {
-        name: 'User Management',
-        icon: RiUser3Line,
-        link: "/dashboard/advance/user-management"
+        name: 'Go to Home',
+        icon: RiHome2Line,
+        link: '/',
     }
 ]
 

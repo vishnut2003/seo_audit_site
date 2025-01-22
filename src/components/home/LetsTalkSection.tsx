@@ -8,13 +8,13 @@ const LetsTalkSection = () => {
             <div className="max-w-[600px] w-full text-center flex items-center flex-col gap-7">
                 <h2
                     className="text-3xl font-extrabold"
-                >Let’s Connect and Try a Demo</h2>
+                >Let&apos;s Connect and Try a Demo</h2>
 
-                <p>We’re here to answer your questions, discuss your goals, and help bring your ideas to life. Let’s collaborate today!</p>
+                <p>We&apos;re here to answer your questions, discuss your goals, and help bring your ideas to life. Let&apos;s collaborate today!</p>
 
                 <button className="button-style-secondary w-max">
                     <RiPhoneFill size={20}/>
-                    Let's Talk!
+                    Let&apos;s Talk!
                 </button>
             </div>
         </div>

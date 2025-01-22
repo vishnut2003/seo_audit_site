@@ -37,7 +37,7 @@ const GridMyAccountItems = () => {
 
     return (
         <div
-            className="flex flex-nowrap gap-7"
+            className="flex md:flex-nowrap flex-col gap-7"
         >
             {
                 items.map((item, index) => (
