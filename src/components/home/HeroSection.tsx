@@ -45,12 +45,24 @@ const HeroSection = () => {
 
   return (
     <div className="outer-wrapper h-full p-0 max-h-[100vh]">
-      <div className="inner-wrapper">
+      <div className="inner-wrapper md:flex-row flex-col-reverse pb-5">
 
         {/* Left column */}
-        <div className="w-full flex flex-col gap-8 leading-9 text-lg pr-20">
-          <h1 className="text-accent1 uppercase">
+        <div className="w-full flex flex-col gap-8 leading-9 text-lg md:pr-20">
+          {/* Heading for desktop */}
+          <h1 className="text-accent1 uppercase hidden md:block">
             {h1StaticTitle} <br /> Strategy with
+            <span
+              className="text-accent2"
+            > {displayedText}</span>
+
+            {/* cursor */}
+            <span className="bg-accent2 w-[1px] h-8 relative inline-block ml-1 animate-ping"></span>
+          </h1>
+          
+          {/* Heading For */}
+          <h1 className="text-accent1 uppercase block md:hidden">
+          Transform SEO <br />
             <span
               className="text-accent2"
             > {displayedText}</span>
@@ -70,7 +82,7 @@ const HeroSection = () => {
         </div>
 
         {/* Right Col */}
-        <div className="w-[70%] py-32">
+        <div className="w-[70%] md:py-32 py-10">
           <Image
             alt="Tool Dashboard"
             src={'/home/home-hero-image.png'}
