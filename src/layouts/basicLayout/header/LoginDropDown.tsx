@@ -11,7 +11,7 @@ const LoginDropDown = () => {
                 <p className='text-sm'>Have an account? Login now.</p>
                 <Link
                     className='text-accent1 hover:text-accent2 font-semibold underline text-sm'
-                    href={'/login'}
+                    href={'/auth'}
                 >Login</Link>
             </div>
             
@@ -21,7 +21,7 @@ const LoginDropDown = () => {
                 <p className='text-sm'>New User? Create an account to get started today.</p>
                 <Link
                     className='text-accent1 hover:text-accent2 font-semibold underline text-sm'
-                    href={'/login'}
+                    href={'/auth?form=register'}
                 >Create an Account</Link>
             </div>
             
@@ -29,17 +29,17 @@ const LoginDropDown = () => {
             <div className='flex flex-col gap-3 border-b p-6'>
                 <Link
                     className='text-accent1 hover:text-accent2 font-semibold underline text-sm'
-                    href={'/login'}
+                    href={'#'}
                 >Go to Dashboard</Link>
                 
                 <Link
                     className='text-accent1 hover:text-accent2 font-semibold underline text-sm'
-                    href={'/login'}
+                    href={'#'}
                 >Forget Password?</Link>
                 
                 <Link
                     className='text-accent1 hover:text-accent2 font-semibold underline text-sm'
-                    href={'/login'}
+                    href={'#'}
                 >Support</Link>
             </div>
         </div>

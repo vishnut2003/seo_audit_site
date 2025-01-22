@@ -6,9 +6,22 @@ import { Button } from "@/components/ui/button"
 import { RiArrowLeftSLine } from "@remixicon/react";
 import Image from "next/image"
 import Link from "next/link";
-import { useState } from "react"
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react"
 
 const AuthPage = () => {
+
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const formType = searchParams.get("form");
+        if(formType === "register") {
+            setCurrentForm("register")
+        } else if (formType === "login") {
+            setCurrentForm("login");
+        }
+    }, [])
+
     const [currentForm, setCurrentForm] = useState<"login" | "register">("login")
     return (
         <div className="outer-wrapper h-dvh w-screen">
