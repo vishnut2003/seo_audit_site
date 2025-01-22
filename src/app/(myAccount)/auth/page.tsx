@@ -28,7 +28,7 @@ const AuthPage = () => {
             <div className="w-full max-w-screen-lg flex justify-center items-stretch rounded-sm overflow-hidden shadow-2xl">
 
                 {/* Left col */}
-                <div className="w-full bg-accent1 p-10 text-background flex flex-col justify-between">
+                <div className="w-full bg-accent1 p-10 text-background md:flex hidden flex-col justify-between">
                     <div className="flex flex-col justify-start gap-10">
                         <div className="space-y-5">
                             <h2 className="text-2xl font-semibold">Welcome Back! Ready to Dive In?</h2>
@@ -56,8 +56,17 @@ const AuthPage = () => {
                 </div>
 
                 {/* Right col */}
-                <div className="w-[70%] p-10 space-y-5">
-                    <h2 className="text-xl font-extrabold">{currentForm === "login" ? "Welcome Back" : "Create an Account"}</h2>
+                <div className="md:w-[70%] w-full p-10 space-y-5">
+                    <h2 className="text-xl font-extrabold flex justify-between items-center">
+                        <Link
+                            href={'/'}
+                            className="text-sm font-medium flex md:hidden gap-1 items-center"
+                        >
+                            <RiArrowLeftSLine size={17} />
+                            home
+                        </Link>
+                        {currentForm === "login" ? "Welcome Back" : "Create an Account"}
+                    </h2>
                     {
                         currentForm === "login" ? <LoginForm /> : <RegisterForm />
                     }
@@ -100,6 +109,28 @@ const AuthPage = () => {
                             />
                             <p className="w-full text-center text-sm">Github</p>
                         </Button>
+                    </div>
+
+                    {/* Change form type button for mobile */}
+                    <div
+                        className="flex justify-between"
+                    >
+                        <p
+                            className="text-sm"
+                        >
+                            {currentForm === "login" ? "New User?" : "Existing User?"}
+                            <span
+                                onClick={() => setCurrentForm(prev => prev === "login" ? "register" : "login")}
+                                className="ml-2 text-accent2 cursor-pointer"
+                            >
+                                {currentForm === "login" ? "Register" : "Login"}
+                            </span>
+                        </p>
+
+                        {/* forget password */}
+                        <p
+                            className="ml-2 text-accent2 cursor-pointer text-sm"
+                        >Forget Passwor?</p>
                     </div>
                 </div>
             </div>
