@@ -9,6 +9,7 @@ import { RegisterFormEntryInterface } from "@/interfaces/user"
 
 const RegisterForm = () => {
     const [rePassword, setRePassword] = useState<string>('')
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [formData, setFormData] = useState<RegisterFormEntryInterface>({
         name: "",
@@ -83,14 +84,18 @@ const RegisterForm = () => {
                     <Input
                         required
                         id="password"
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         name="password"
                         value={formData.password}
                         onChange={handleOncange}
                         placeholder="Enter Password"
                     />
 
-                    <button className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'>
+                    <button 
+                        type="button"
+                        className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'
+                        onClick={() => setShowPassword(prev => !prev)}
+                    >
                         <RiEyeLine size={20} />
                     </button>
                 </div>
