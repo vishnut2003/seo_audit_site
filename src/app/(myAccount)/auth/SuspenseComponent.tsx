@@ -3,10 +3,11 @@
 import LoginForm from "@/components/auth/LoginForm"
 import RegisterForm from "@/components/auth/RegisterForm";
 import { Button } from "@/components/ui/button"
+import { getUserSession } from "@/utils/client/auth";
 import { RiArrowLeftSLine, RiErrorWarningLine } from "@remixicon/react";
 import Image from "next/image"
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react"
 
 const AuthComponent = () => {
@@ -15,6 +16,16 @@ const AuthComponent = () => {
     const [errorMessage, setErrorMessage] = useState<string>('')
 
     useEffect(() => {
+        // check if use is already logged in 
+        (async () => {
+            const session = await getUserSession();
+            if ('user' in session) {
+                redirect('/my-account')
+            } else {
+                return;
+            }
+        })()
+
         const formType = searchParams.get("form");
         if (formType === "register") {
             setCurrentForm("register")

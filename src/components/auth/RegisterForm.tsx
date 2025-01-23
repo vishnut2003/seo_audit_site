@@ -4,8 +4,9 @@ import { Label } from "../ui/label"
 import { Checkbox } from "../ui/checkbox"
 import { Button } from "../ui/button"
 import { ChangeEvent, FormEvent, useState } from "react"
-import { submitRegisterFormData, validateRegisterFormData } from "@/utils/client/auth"
+import { validateRegisterFormData } from "@/utils/client/auth"
 import { RegisterFormEntryInterface } from "@/interfaces/user"
+import { signIn } from "next-auth/react"
 
 const RegisterForm = () => {
     const [rePassword, setRePassword] = useState<string>('')
@@ -35,7 +36,11 @@ const RegisterForm = () => {
             })
 
             // submit data
-            await submitRegisterFormData(formData);
+            await signIn("Register", {
+                // form data
+                ...formData,
+                callbackUrl: "/my-account",
+            })
 
         } catch (err) {
             if (typeof err === 'string') {

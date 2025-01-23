@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 
 interface ReturnUserData extends RegisterFormEntryInterface {
     id: string,
+    image: string,
 }
 
 export async function registerUser(formData?: RegisterFormEntryInterface) {
@@ -38,9 +39,8 @@ export async function registerUser(formData?: RegisterFormEntryInterface) {
             const userId = uuid();
 
             // write to database
-            await UserModel.create({ name, email, password: hashPassword, userId });
-
-            return resolve({ ...formData, id: userId });
+            const createdUser = await UserModel.create({ name, email, password: hashPassword, userId });
+            return resolve({ ...formData, id: userId, image: createdUser.image });
 
         } catch (err) {
             return reject(err);

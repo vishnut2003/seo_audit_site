@@ -3,8 +3,11 @@ import { LoginFormEntryInterface } from "@/interfaces/user";
 import UserModel, { UserModelInterface } from "@/models/UserModel";
 import bcrypt from 'bcrypt';
 
-interface ReturnUserData extends UserModelInterface {
+interface ReturnUserData {
     id: string,
+    name: string,
+    email: string,
+    image: string
 }
 
 export async function loginUser({ email, password }: LoginFormEntryInterface) {
@@ -22,9 +25,10 @@ export async function loginUser({ email, password }: LoginFormEntryInterface) {
             if (validPassword) {
                 const userData: ReturnUserData = {
                     id: user.userId,
-                    ...user,
+                    name: user.name,
+                    email: user.email,
+                    image: user.image,
                 }
-                delete user.userId;
 
                 return resolve(userData);
             } else {

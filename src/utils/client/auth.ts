@@ -1,5 +1,5 @@
-import { RegisterFormEntryInterface } from "@/interfaces/user";
-import { signIn } from "next-auth/react"
+import axios from "axios";
+import { Session } from "next-auth";
 
 export async function validateRegisterFormData ({password, repassword}: {
     password: string,
@@ -19,18 +19,14 @@ export async function validateRegisterFormData ({password, repassword}: {
     })
 }
 
-export async function submitRegisterFormData (formData: RegisterFormEntryInterface) {
-    return new Promise<void>(async (resolve) => {
+export async function getUserSession () {
+    return new Promise<Session>(async (resolve, reject) => {
         try {
-
-            await signIn("Register", {
-                // form data
-                ...formData,
-                callbackUrl: "/my-account",
-            })
-            resolve();
+            const response = await axios.get('/api/auth/session');
+            const session = response.data as Session;
+            return resolve(session);
         } catch (err) {
-            console.log(err);
+            return reject(err);
         }
     })
 }
