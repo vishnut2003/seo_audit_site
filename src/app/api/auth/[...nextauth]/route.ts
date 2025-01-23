@@ -1,3 +1,4 @@
+import { loginUser } from "@/utils/server/auth/loginUser";
 import { registerUser } from "@/utils/server/auth/registerUser";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -37,8 +38,16 @@ const handler = NextAuth({
                 password: { type: "password" }
             },
             async authorize(credentials) {
-                console.log(credentials)
-                return null;
+                try {
+                    if (!credentials) {
+                        return null
+                    }
+
+                    const userData = await loginUser(credentials);
+                    return userData;
+                } catch (err) {
+                    return null;
+                }
             },
         })
         // ...add more providers here

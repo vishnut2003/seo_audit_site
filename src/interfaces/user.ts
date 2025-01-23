@@ -3,3 +3,8 @@ export interface RegisterFormEntryInterface {
     email: string,
     password: string,
 }
+
+export interface LoginFormEntryInterface {
+    email: string,
+    password: string,
+}

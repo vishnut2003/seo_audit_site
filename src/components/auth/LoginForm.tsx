@@ -1,17 +1,49 @@
-import React from 'react'
+'use client';
+
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { RiEyeLine } from '@remixicon/react'
 import { Checkbox } from '../ui/checkbox'
 import { Button } from '../ui/button'
+import { signIn } from 'next-auth/react'
+import { LoginFormEntryInterface } from '@/interfaces/user';
 
 const LoginForm = () => {
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [formData, setFormData] = useState<LoginFormEntryInterface>({
+        email: '',
+        password: '',
+    })
+
+    function handleOnchange (e: ChangeEvent<HTMLInputElement>) {
+        setFormData(prev => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }))
+    }
+
+    async function _submitLoginForm (e: FormEvent) {
+        e.preventDefault();
+        await signIn('Login', {
+            callbackUrl: '/my-account',
+            ...formData,
+        })
+    }
+
     return (
-        <form className="space-y-4">
+        <form
+            onSubmit={_submitLoginForm} 
+            className="space-y-4"
+        >
             <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
                 <Input
                     id="email"
+                    required
+                    name='email'
+                    value={formData.email}
+                    onChange={handleOnchange}
                     placeholder="Enter Email Address"
                 />
             </div>
@@ -21,10 +53,19 @@ const LoginForm = () => {
                 <div className='relative'>
                     <Input
                         id="password"
+                        required
+                        type={showPassword ? "text" : "password"}
+                        name='password'
+                        value={formData.password}
+                        onChange={handleOnchange}
                         placeholder="Enter Password"
                     />
 
-                    <button className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'>
+                    <button 
+                        type='button'
+                        className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'
+                        onClick={() => setShowPassword(prev => !prev)}
+                    >
                         <RiEyeLine size={20}/>
                     </button>
                 </div>
