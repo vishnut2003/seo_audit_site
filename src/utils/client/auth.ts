@@ -20,7 +20,7 @@ export async function validateRegisterFormData ({password, repassword}: {
 }
 
 export async function submitRegisterFormData (formData: RegisterFormEntryInterface) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<void>(async (resolve) => {
         try {
 
             await signIn("Register", {
