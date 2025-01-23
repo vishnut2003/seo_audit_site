@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema<UserModelInterface>({
     },
     name: {
         type: String,
-        unique: true,
         required: true
     },
     email: {
