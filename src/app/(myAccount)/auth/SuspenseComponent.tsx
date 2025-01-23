@@ -3,7 +3,7 @@
 import LoginForm from "@/components/auth/LoginForm"
 import RegisterForm from "@/components/auth/RegisterForm";
 import { Button } from "@/components/ui/button"
-import { RiArrowLeftSLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiErrorWarningLine } from "@remixicon/react";
 import Image from "next/image"
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -11,7 +11,8 @@ import { useEffect, useState } from "react"
 
 const AuthComponent = () => {
     const searchParams = useSearchParams();
-    const [currentForm, setCurrentForm] = useState<"login" | "register">("login")
+    const [currentForm, setCurrentForm] = useState<"login" | "register">("login");
+    const [errorMessage, setErrorMessage] = useState<string>('')
 
     useEffect(() => {
         const formType = searchParams.get("form");
@@ -19,6 +20,12 @@ const AuthComponent = () => {
             setCurrentForm("register")
         } else if (formType === "login") {
             setCurrentForm("login");
+        }
+
+        // set error if error params is in url
+        const error = searchParams.get('error');
+        if (error) {
+            setErrorMessage(error);
         }
     }, [searchParams])
 
@@ -109,6 +116,17 @@ const AuthComponent = () => {
                             <p className="w-full text-center text-sm">Github</p>
                         </Button>
                     </div>
+
+                    {
+                        // error message
+                        errorMessage &&
+                        <div
+                            className="text-sm bg-red-100 text-red-500 flex justify-center items-center gap-2 py-3 px-4 rounded-sm"
+                        >
+                            <RiErrorWarningLine size={15} />
+                            <p>{errorMessage}</p>
+                        </div>
+                    }
 
                     {/* Change form type button for mobile */}
                     <div

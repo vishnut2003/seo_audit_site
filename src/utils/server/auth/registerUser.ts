@@ -9,20 +9,24 @@ interface ReturnUserData extends RegisterFormEntryInterface {
 }
 
 export async function registerUser(formData?: RegisterFormEntryInterface) {
-    return new Promise<ReturnUserData>(async (resolve, reject) => {
+    return new Promise<ReturnUserData | { error: string }>(async (resolve, reject) => {
         try {
 
             if (!formData) {
-                return reject("Invalid data");
+                return resolve({
+                    error: "Invalid Data",
+                });
             }
 
             const { name, email, password } = formData;
 
             await dbConnect();
 
-            const emailExist = await UserModel.findOne({ email: password });
+            const emailExist = await UserModel.findOne({ email });
             if (emailExist) {
-                return reject("Email already exist!");
+                return resolve({
+                    error: "Email already exist!",
+                });
             }
 
             // hash password
@@ -36,7 +40,7 @@ export async function registerUser(formData?: RegisterFormEntryInterface) {
             // write to database
             await UserModel.create({ name, email, password: hashPassword, userId });
 
-            return resolve({...formData, id: userId });
+            return resolve({ ...formData, id: userId });
 
         } catch (err) {
             return reject(err);

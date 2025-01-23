@@ -15,6 +15,15 @@ const handler = NextAuth({
             async authorize(credentials) {
                 try {
                     const userData = await registerUser(credentials)
+
+                    // handle failed login
+                    if ('error' in userData) {
+                        return {
+                            error: userData.error,
+                            id: '',
+                        }
+                    }
+
                     return userData;
                 } catch (err) {
                     return null;
@@ -34,10 +43,20 @@ const handler = NextAuth({
         })
         // ...add more providers here
     ],
+    callbacks: {
+        async signIn({ user }) {
+            if ('error' in user && typeof user.error === 'string') {
+                throw new Error(user.error);
+            } else {
+                return true;
+            }
+        }
+    },
     pages: {
         signIn: '/auth',
         newUser: '/my-account',
         signOut: '/auth',
+        error: '/auth'
     },
     secret: process.env.NEXTAUTH_SECRET,
 });
