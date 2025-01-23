@@ -1,6 +1,6 @@
 import { dbConnect } from "@/database/DBConfig";
 import { LoginFormEntryInterface } from "@/interfaces/user";
-import UserModel, { UserModelInterface } from "@/models/UserModel";
+import UserModel from "@/models/UserModel";
 import bcrypt from 'bcrypt';
 
 interface ReturnUserData {

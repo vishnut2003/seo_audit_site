@@ -27,7 +27,11 @@ const handler = NextAuth({
 
                     return userData;
                 } catch (err) {
-                    return null;
+                    if (err) {
+                        return null;
+                    } else {
+                        return null;
+                    }
                 }
             },
         }),
@@ -46,7 +50,11 @@ const handler = NextAuth({
                     const userData = await loginUser(credentials);
                     return userData;
                 } catch (err) {
-                    return null;
+                    if (err) {
+                        return null;
+                    } else {
+                        return null;
+                    }
                 }
             },
         })
