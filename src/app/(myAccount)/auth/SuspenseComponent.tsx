@@ -55,7 +55,7 @@ const AuthComponent = () => {
                 </div>
 
                 {/* Right col */}
-                <div className="md:w-[70%] w-full p-10 space-y-5">
+                <div className="md:w-[70%] w-full md:p-10 p-6 space-y-5">
                     <h2 className="text-xl font-extrabold flex justify-between items-center">
                         <Link
                             href={'/'}

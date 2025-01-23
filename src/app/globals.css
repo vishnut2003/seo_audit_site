@@ -28,7 +28,7 @@ body {
 
 /* Heading common styles */
 h1 {
-  @apply md:text-4xl font-black md:leading-[50px] leading-[45px] text-[36px];
+  @apply md:text-4xl font-black md:leading-[50px] leading-[45px] text-[34px];
 }
 
 p {
