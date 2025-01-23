@@ -3,7 +3,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
-import { RiEyeLine } from '@remixicon/react'
+import { RiEyeLine, RiEyeOffLine } from '@remixicon/react'
 import { Checkbox } from '../ui/checkbox'
 import { Button } from '../ui/button'
 import { signIn } from 'next-auth/react'
@@ -66,7 +66,7 @@ const LoginForm = () => {
                         className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'
                         onClick={() => setShowPassword(prev => !prev)}
                     >
-                        <RiEyeLine size={20}/>
+                        {showPassword ? <RiEyeLine size={20}/> : <RiEyeOffLine size={20}/>}
                     </button>
                 </div>
             </div>

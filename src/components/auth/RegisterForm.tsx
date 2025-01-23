@@ -1,4 +1,4 @@
-import { RiErrorWarningLine, RiEyeLine } from "@remixicon/react"
+import { RiErrorWarningLine, RiEyeLine, RiEyeOffLine } from "@remixicon/react"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Checkbox } from "../ui/checkbox"
@@ -96,7 +96,7 @@ const RegisterForm = () => {
                         className='absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400'
                         onClick={() => setShowPassword(prev => !prev)}
                     >
-                        <RiEyeLine size={20} />
+                        {showPassword ? <RiEyeLine size={20} /> : <RiEyeOffLine size={20}/>}
                     </button>
                 </div>
             </div>
