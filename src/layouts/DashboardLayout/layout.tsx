@@ -2,11 +2,12 @@ import { ReactNode } from "react"
 import Header from "./Header/Header"
 import Sidebar from "./Sidebar/Sidebar"
 
-const DashboardLayout = ({children}: Readonly<{
-  children: ReactNode
+const DashboardLayout = ({children, pageTitle}: Readonly<{
+  children: ReactNode,
+  pageTitle: string,
 }>) => {
   return (
-    <div className="w-full h-[100dvh] flex bg-gray-50">
+    <div className="w-full h-[100dvh] flex bg-gray-100">
         {/* Basic Layout Sidebar */}
         <Sidebar/>
         
@@ -14,7 +15,7 @@ const DashboardLayout = ({children}: Readonly<{
         <div className="w-full h-full flex flex-col">
           
           {/* Header of basic layout */}
-          <Header/>
+          <Header pageTitle={pageTitle}/>
           <div className="w-full h-full min-h-0 overflow-y-auto p-5 flex justify-center">
 
             {/* Page Content */}

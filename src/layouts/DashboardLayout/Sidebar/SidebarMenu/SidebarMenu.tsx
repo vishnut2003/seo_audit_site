@@ -9,11 +9,11 @@ const SidebarMenu = () => {
     const pathname = usePathname();
 
     return (
-        <div className="w-full flex flex-col gap-2 text-white">
+        <div className="w-full flex flex-col gap-2">
             {sidebarMenuItems.map((menuItem, index) => (
-                <Link href={menuItem.link} key={index} className={`flex min-w-max gap-2 opacity-95 py-3 px-4 rounded-lg ${menuItem.link === pathname ? 'bg-accent2 text-white hover:bg-accent2' : 'hover:bg-white/10'}`}>
+                <Link href={menuItem.link} key={index} className={`flex min-w-max gap-2 opacity-95 py-3 px-4 rounded-lg ${menuItem.link === pathname ? 'bg-accent2 text-white hover:bg-accent2' : 'hover:bg-gray-50'}`}>
                     <menuItem.icon size={24} />
-                    <p className="whitespace-nowrap">{menuItem.name}</p>
+                    <p className="whitespace-nowrap font-semibold">{menuItem.name}</p>
                 </Link>
             ))}
         </div>

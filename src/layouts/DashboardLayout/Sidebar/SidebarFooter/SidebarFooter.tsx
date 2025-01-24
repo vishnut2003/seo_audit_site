@@ -11,7 +11,10 @@ const SidebarFooter = () => {
           <SingleMenuItem key={index} menuItem={menuItem} />
         ))
       }
-      <LogoutButton iconType={true} className="flex gap-2 opacity-95 py-3 px-4 rounded-lg hover:bg-white/10 w-full"/>
+      <LogoutButton 
+        iconType={true} 
+        className="flex gap-2 font-semibold py-3 px-4 rounded-lg hover:bg-gray-50 w-full"
+      />
 
     </div>
   )
