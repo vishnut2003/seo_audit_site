@@ -28,13 +28,15 @@ function BasicEditLayout({
             className="md:w-[400px] flex flex-col gap-2"
         >
             <Label
-               children={label}
                className="text-lg font-bold"
-            />
+            >
+                {label}
+            </Label>
             <Label
-                children={subLabel}
                 className="leading-[20px] opacity-60"
-            />
+            >
+                {subLabel}
+            </Label>
         </div>
 
         {/* second col */}
@@ -47,10 +49,11 @@ function BasicEditLayout({
                 value={value}
             />
             <Button
-                children="Save"
                 className="bg-accent1"
                 onClick={onSubmit}
-            />
+            >
+                Save
+            </Button>
         </div>
     </div>
   )
