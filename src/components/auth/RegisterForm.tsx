@@ -12,6 +12,7 @@ const RegisterForm = () => {
     const [rePassword, setRePassword] = useState<string>('')
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [inProgress, setInProgress] = useState<boolean>(false)
     const [formData, setFormData] = useState<RegisterFormEntryInterface>({
         name: "",
         email: "",
@@ -28,6 +29,7 @@ const RegisterForm = () => {
     async function _submitUserData (e: FormEvent) {
         try {
             e.preventDefault();
+            setInProgress(true);
 
             // Validate form data
             await validateRegisterFormData({
@@ -41,6 +43,7 @@ const RegisterForm = () => {
                 ...formData,
                 callbackUrl: "/my-account",
             })
+            setInProgress(false);
 
         } catch (err) {
             if (typeof err === 'string') {
@@ -125,8 +128,11 @@ const RegisterForm = () => {
                 </div>
             </div>
 
-            <Button className='w-full py-5 bg-accent1 hover:bg-accent1'>
-                Register
+            <Button 
+                className='w-full py-5 bg-accent1 hover:bg-accent1 disabled:opacity-80'
+                disabled={inProgress}
+            >
+                {inProgress ? "Loading..." : "Register"}
             </Button>
 
             {

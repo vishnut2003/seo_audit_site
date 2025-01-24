@@ -11,6 +11,7 @@ import { LoginFormEntryInterface } from '@/interfaces/user';
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [inProgress, setInProgress] = useState<boolean>(false)
     const [formData, setFormData] = useState<LoginFormEntryInterface>({
         email: '',
         password: '',
@@ -24,11 +25,13 @@ const LoginForm = () => {
     }
 
     async function _submitLoginForm (e: FormEvent) {
+        setInProgress(true);
         e.preventDefault();
         await signIn('Login', {
             callbackUrl: '/my-account',
             ...formData,
         })
+        setInProgress(false);
     }
 
     return (
@@ -78,8 +81,11 @@ const LoginForm = () => {
                 </div>
             </div>
 
-            <Button className='w-full py-5 bg-accent1 hover:bg-accent1'>
-                SignIn
+            <Button 
+                className='w-full py-5 bg-accent1 hover:bg-accent1 disabled:opacity-80'
+                disabled={inProgress}
+            >
+                {inProgress ? "Loading..." : "SignIn"}
             </Button>
         </form>
     )
