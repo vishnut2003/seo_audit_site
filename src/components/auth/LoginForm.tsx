@@ -45,6 +45,7 @@ const LoginForm = () => {
                     id="email"
                     required
                     name='email'
+                    className='text-sm md:text-base'
                     value={formData.email}
                     onChange={handleOnchange}
                     placeholder="Enter Email Address"
@@ -59,6 +60,7 @@ const LoginForm = () => {
                         required
                         type={showPassword ? "text" : "password"}
                         name='password'
+                        className='text-sm md:text-base'
                         value={formData.password}
                         onChange={handleOnchange}
                         placeholder="Enter Password"

@@ -20,13 +20,15 @@ function UserCard() {
       <div
         className="flex flex-col items-end"
       >
-        <Image
-          src={userSession?.user?.image || '/users/default-avatar.png'}
-          alt="User Image"
-          width={1000}
-          height={1000}
-          className="w-[40px] drop-shadow-xl"
-        />
+        <Link href={'/my-account/account-settings'}>
+          <Image
+            src={userSession?.user?.image || '/users/default-avatar.png'}
+            alt="User Image"
+            width={1000}
+            height={1000}
+            className="w-[40px] drop-shadow-xl"
+          />
+        </Link>
       </div>
     </div>
   )

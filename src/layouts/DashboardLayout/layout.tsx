@@ -16,7 +16,7 @@ const DashboardLayout = ({children, pageTitle}: Readonly<{
           
           {/* Header of basic layout */}
           <Header pageTitle={pageTitle}/>
-          <div className="w-full h-full min-h-0 overflow-y-auto p-5 flex justify-center">
+          <div className="w-full h-full min-h-0 overflow-y-auto px-7 py-5 flex justify-center">
 
             {/* Page Content */}
             <div className="w-full max-w-screen-2xl h-full">
