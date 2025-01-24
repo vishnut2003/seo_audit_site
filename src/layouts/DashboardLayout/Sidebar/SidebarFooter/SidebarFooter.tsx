@@ -4,7 +4,7 @@ import SingleMenuItem from "./SingleMenuItem"
 
 const SidebarFooter = () => {
   return (
-    <div className="w-full py-5 px-6 border-t border-white/10">
+    <div className="w-full py-5 px-6 border-t border-gray-100">
 
       {/* Logout button */
         footerMenuItems.map((menuItem, index) => (

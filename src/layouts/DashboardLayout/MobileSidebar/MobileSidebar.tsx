@@ -5,6 +5,7 @@ import SidebarFooter from "../Sidebar/SidebarFooter/SidebarFooter";
 import SidebarMenu from "../Sidebar/SidebarMenu/SidebarMenu";
 import { RiArrowLeftLine, RiBarChartHorizontalLine } from "@remixicon/react";
 import { motion } from "framer-motion";
+import SidebarLogo from "../Sidebar/SidebarLogo";
 
 const MobileSidebar = () => {
 
@@ -27,11 +28,11 @@ const MobileSidebar = () => {
                     animate={{ x: 0 }}
                     exit={{ x: '-100%' }}
                     transition={{ type: 'linear', stiffness: 300 }}
-                    className='fixed left-0 top-0 w-[90%] h-full bg-accent1 text-background z-50 transition-all max-w-[350px] text-foregroundwhite flex md:hidden flex-col justify-start overflow-hidden'
+                    className='fixed left-0 top-0 w-[90%] h-full bg-background text-foreground shadow-xl z-50 transition-all max-w-[350px] text-foregroundwhite flex md:hidden flex-col justify-start overflow-hidden'
                 >
 
-                    <div className="w-full py-5 px-6 flex justify-between gap-3 items-center">
-                        <h2 className="font-bold text-3xl whitespace-nowrap">SEO Audit</h2>
+                    <div className="w-full pr-6 flex justify-between gap-3 items-center">
+                        <SidebarLogo/>
                         <RiArrowLeftLine
                             onClick={() => setSidebar(false)}
                             size={25} />
