@@ -1,4 +1,4 @@
-import { RiAlignItemBottomLine, RiBillLine, RiDashboardLine, RiLockPasswordLine, RiSettings4Line } from "@remixicon/react";
+import { RiAlignItemBottomLine, RiBillLine, RiDashboardLine, RiSettings4Line } from "@remixicon/react";
 
 const sidebarMenuItems = [
     {

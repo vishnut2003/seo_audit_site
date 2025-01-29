@@ -1,6 +1,5 @@
 'use client';
 
-import { Session } from "next-auth";
 import BasicEditLayout from "./BasicEditLayout"
 import { FormEvent, useEffect, useState } from "react"
 import { getSession } from "next-auth/react";
