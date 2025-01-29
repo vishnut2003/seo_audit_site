@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ChangeEventHandler } from "react"
+import { ChangeEventHandler, FormEvent } from "react"
 
 function BasicEditLayout({
     label,
@@ -9,14 +9,18 @@ function BasicEditLayout({
     inputPlaceholder,
     value,
     onChange,
+    inputType,
     onSubmit,
+    buttonDisable
 }: {
     label: string,
     subLabel: string,
     inputPlaceholder: string,
     value: string,
     onChange: ChangeEventHandler<HTMLInputElement>,
-    onSubmit: () => any
+    inputType: string,
+    onSubmit: (e: FormEvent) => any,
+    buttonDisable: boolean,
 }) {
   return (
     <div 
@@ -40,21 +44,23 @@ function BasicEditLayout({
         </div>
 
         {/* second col */}
-        <div
+        <form
+            onSubmit={onSubmit}
             className="w-full flex flex-col gap-2 items-end"
         >
             <Input
                 placeholder={inputPlaceholder}
                 onChange={onChange}
                 value={value}
+                type={inputType}
             />
             <Button
                 className="bg-accent1"
-                onClick={onSubmit}
+                disabled={buttonDisable}
             >
                 Save
             </Button>
-        </div>
+        </form>
     </div>
   )
 }

@@ -12,11 +12,6 @@ const sidebarMenuItems = [
         link: '/my-account/account-settings'
     },
     {
-        name: 'Reset Password',
-        icon: RiLockPasswordLine,
-        link: '/my-account/reset-password'
-    },
-    {
         name: 'Billing & Payments',
         icon: RiBillLine,
         link: '/my-account/billing'
